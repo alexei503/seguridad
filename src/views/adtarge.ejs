@@ -17,12 +17,16 @@
             <!-- form -->
             <form action="/adtarge" method="post">
               <div class="form-group">
-                <label for="targe">Targeta</label>
+                <label for="targe">Tarjeta</label>
                 <input type="targe" name="targe" class="form-control">
               </div>
               <div class="form-group">
                 <label for="money">Saldo</label>
                 <input type="money" name="money" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="form-control" value= <%= user.local.email %>>
               </div>
               
               <input type="submit" class="btn btn-dark btn-lg">

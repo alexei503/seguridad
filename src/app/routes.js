@@ -12,12 +12,6 @@ module.exports = (app, passport) => {
 		});
 	});
 
-	app.get('/adtarge', (req, res) => {
-		res.render('adtarge.ejs', {
-			message: req.flash('targetaMessage')
-		});
-	});
-
 	app.post('/adtarge', passport.authenticate('local-adtarge', {
 		successRedirect: '/profile',
 		failureRedirect: '/adtarge',
@@ -26,6 +20,7 @@ module.exports = (app, passport) => {
 
 	app.get('/adtarge', (req, res) => {
 		res.render('adtarge', {
+			user: req.user,
 			message: req.flash('adtargeMessage')
 		});
 	});

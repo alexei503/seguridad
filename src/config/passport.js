@@ -61,6 +61,7 @@ module.exports = function (passport) {
   passport.use('local-adtarge', new LocalStrategy({
     usernameField: 'targe',
     passwordField: 'money',
+    emailField: 'email',
     passReqToCallback : true // allows us to pass back the entire request to the callback
   },
   function (req, targe, money, done) {
@@ -74,7 +75,7 @@ module.exports = function (passport) {
         console.log(targe + money)
         var newUser2 = new User2();
         newUser2.target.targeta = targe;
-        newUser2.target.email = "asdasd";
+        newUser2.target.email = req.param('email');
         newUser2.target.numero = money;
         newUser2.save(function (err) {
           if (err) { throw err; }
@@ -87,7 +88,7 @@ module.exports = function (passport) {
 
   // login
   // we are using named strategies since we have one for login and one for signup
-  // by default, if there was no name, it would just be called 'local
+  // by default, if there was no name, it would just be called 'local 
   passport.use('local-login', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
