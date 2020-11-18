@@ -74,7 +74,7 @@ module.exports = function (passport) {
         console.log(targe + money)
         var newUser2 = new User2();
         newUser2.target.targeta = targe;
-        newUser.targeta.email = "asdasd";
+        newUser2.target.email = "asdasd";
         newUser2.target.numero = money;
         newUser2.save(function (err) {
           if (err) { throw err; }
