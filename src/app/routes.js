@@ -12,6 +12,23 @@ module.exports = (app, passport) => {
 		});
 	});
 
+	app.get('/adtarge', (req, res) => {
+		res.render('adtarge.ejs', {
+			message: req.flash('targetaMessage')
+		});
+	});
+
+	app.post('/adtarge', passport.authenticate('local-adtarge', {
+		successRedirect: '/profile',
+		failureRedirect: '/adtarge',
+		failureFlash: true
+	}));
+
+	app.get('/adtarge', (req, res) => {
+		res.render('adtarge', {
+			message: req.flash('adtargeMessage')
+		});
+	});
 
 	app.post('/login', passport.authenticate('local-login', {
 		successRedirect: '/profile',

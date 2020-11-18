@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <% include partials/head %>
+  </head>
+  <body class="signup">
+    <div class="container">
+      <div class="col-sm-6 mx-auto">
+        <div class="card mt-5">
+          <div class="card-body">
+            <!-- messages -->
+            <h1 class="text-center">
+              
+
+            <!-- form -->
+            <form action="/adtarge" method="post">
+              <div class="form-group">
+                <label for="targe">Targeta</label>
+                <input type="targe" name="targe" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="money">Saldo</label>
+                <input type="money" name="money" class="form-control">
+              </div>
+              
+              <input type="submit" class="btn btn-dark btn-lg">
+            </form>
+
+            <hr>
+            <div class="text-center">
+              <p>Cancel? <a href="/profile">Perfil</a></p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

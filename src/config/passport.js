@@ -1,6 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('../app/models/user');
+const User2 = require('../app/models/banco');
 
 module.exports = function (passport) {
   // required for persistent login sessions
@@ -16,13 +17,14 @@ module.exports = function (passport) {
     });
   });
 
+  
+
   // Signup
   passport.use('local-signup', new LocalStrategy({
     // by default, local strategy uses username and password, we will override with email
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback : true // allows us to pass back the entire request to the callback
-    
   },
   function (req, email, password, done) {
     User.findOne({'local.email': email}, function (err, user) {
@@ -34,8 +36,8 @@ module.exports = function (passport) {
       } else {
         var newUser = new User();
         newUser.local.email = email;
-        newUser.local.nombre = req.param('name');
-        newUser.local.password = password;
+        newUser.local.nombre = req.param('name')
+        newUser.local.password = newUser.generateHash(password);
         newUser.save(function (err) {
           if (err) { throw err; }
           return done(null, newUser);
@@ -43,6 +45,45 @@ module.exports = function (passport) {
       }
     });
   }));
+
+////////
+
+  passport.serializeUser(function (banco, done) {
+    done(null, banco.id);
+  });
+
+  passport.deserializeUser(function (id, done) {
+    User2.findById(id, function (err, banco) {
+      done(err, banco);
+    });
+  });
+
+  passport.use('local-adtarge', new LocalStrategy({
+    usernameField: 'targe',
+    passwordField: 'money',
+    passReqToCallback : true // allows us to pass back the entire request to the callback
+  },
+  function (req, targe, money, done) {
+    User2.findOne({'target.targeta': targe}, function (err, banco) {
+      if (err) {
+        return done(err);
+      }
+      if (banco) {
+        return done(null, false, req.flash('adtargeMessage', 'the targe is already taken'));
+      } else {
+        console.log(targe + money)
+        var newUser2 = new User2();
+        newUser2.target.targeta = targe;
+        newUser.targeta.email = "asdasd";
+        newUser2.target.numero = money;
+        newUser2.save(function (err) {
+          if (err) { throw err; }
+          return done(null, newUser2);
+        });
+      }
+    });
+  }));
+
 
   // login
   // we are using named strategies since we have one for login and one for signup
@@ -65,3 +106,4 @@ module.exports = function (passport) {
     });
   }));
 }
+
