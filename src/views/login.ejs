@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Login</title>
+    <title>Iniciar Sesion</title>
     <% include partials/head %>
   </head>
   <body class="login">
@@ -12,7 +12,7 @@
           <div class="card-body">
             <!-- messages -->
             <h1 class="text-center">
-              <span class="fa fa-sign-in"></span> Login
+              <span class="fa fa-sign-in"></span> Iniciar Sesion
             </h1>
             <% if (message.length > 0) { %>
               <div class="alert alert-danger">
@@ -23,11 +23,11 @@
             <!-- form -->
             <form action="/login" method="post">
               <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">Coreo</label>
                 <input type="email" name="email" class="form-control">
               </div>
               <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">Contraseña</label>
                 <input type="password" name="password" class="form-control">
               </div>
               <input type="submit" class="btn btn-dark btn-lg">
@@ -35,8 +35,8 @@
 
             <hr>
             <div class="text-center">
-              <p>Need an account? <a href="/signup">Signup</a></p>
-              <p>Or go <a href="/">home</a>.</p>
+              <p>No tienes cuenta? <a href="/signup">Registrate</a></p>
+              <p>Ir a <a href="/">Inicio</a>.</p>
             </div>
           </div>
         </div>

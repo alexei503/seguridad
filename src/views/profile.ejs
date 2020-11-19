@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html class="perfil">
+  <head >
     <meta charset="utf-8">
-    <title>Profile Page</title>
+    <title>Perfil</title>
     <% include partials/head %>
   </head>
-  <body>
+  <body class="perfil">
     <div class="container">
       <header class="text-center">
-        <h1>Profile Page</h1>
-        <a href="/logout" class="btn btn-light btn-sm">
-          Logout
+        <h1>Banco Plank</h1>
+        <h2>Perfil</h2>
+       
         </a>
       </header>
       <hr>
@@ -20,15 +20,15 @@
             <div class="card-body">
               <h3 class="card-title"><span class="fa fa-user"></span> <%= user.local.nombre %></h3>
               <p>
-                <strong>id</strong> : <%= user._id %> <br>
-                <strong>email</strong> : <%= user.local.email %> <br>
+                <strong>Numero de cuenta</strong> : <%= user._id %> <br>
+                <strong>Saldo</strong> : <%= user.local.email %> <br>
                 <strong>password</strong> : <%= user.local.password %>
               </p>
               <a href="/adtarge" class="btn btn-light btn-sm">
                 Añadir Targeta
               </a>
               <a href="/logout" class="btn btn-light btn-sm">
-                Logout
+                Desconectarse
               </a>
             </div>
           </div>

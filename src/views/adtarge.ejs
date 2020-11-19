@@ -2,8 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Login</title>
+    <title>Añadir targeta</title>
     <% include partials/head %>
+    <style>
+      #correo{
+        display: none;
+      }
+    </style>
   </head>
   <body class="signup">
     <div class="container">
@@ -17,14 +22,14 @@
             <!-- form -->
             <form action="/adtarge" method="post">
               <div class="form-group">
-                <label for="targe">Tarjeta</label>
+                <label for="targe">Numero de Tarjeta</label>
                 <input type="targe" name="targe" class="form-control">
               </div>
               <div class="form-group">
                 <label for="money">Saldo</label>
                 <input type="money" name="money" class="form-control">
               </div>
-              <div class="form-group">
+              <div id="correo" class="form-group">
                 <label for="email">Email</label>
                 <input type="email" name="email" class="form-control" value= <%= user.local.email %>>
               </div>

@@ -1,3 +1,5 @@
+const banco = require("./models/banco");
+
 module.exports = (app, passport) => {
 
 	// index routes
@@ -6,7 +8,7 @@ module.exports = (app, passport) => {
 	});
 
 	//login view
-	app.get('/login', (req, res) => {
+	app.get('/login',(req, res) => {
 		res.render('login.ejs', {
 			message: req.flash('loginMessage')
 		});
@@ -18,12 +20,12 @@ module.exports = (app, passport) => {
 		failureFlash: true
 	}));
 
-	app.get('/adtarge', (req, res) => {
-		res.render('adtarge', {
-			user: req.user,
-			message: req.flash('adtargeMessage')
-		});
-	});
+	app.get('/adtarge', isLoggedIn, (req, res) => {
+        res.render('adtarge', {
+            user: req.user,
+            message: req.flash('adtargeMessage')
+        });
+    });
 
 	app.post('/login', passport.authenticate('local-login', {
 		successRedirect: '/profile',
@@ -45,11 +47,24 @@ module.exports = (app, passport) => {
 	}));
 
 	//profile view
-	app.get('/profile', isLoggedIn, (req, res) => {
+/*	app.get('/profile', async(req, res) => {
+		const targers =  await targeta.find({})
+		console.log(targers);
 		res.render('profile', {
+			targers
+		});
+	});*/
+
+	app.get('/profile' ,isLoggedIn, (req, res) => {
+		//const targers =  banco.targe.find({})
+		//console.log(targers);
+		res.render('profile', {
+
 			user: req.user
 		});
 	});
+
+	
 
 	// logout
 	app.get('/logout', (req, res) => {
