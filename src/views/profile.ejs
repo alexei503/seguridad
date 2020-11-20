@@ -8,7 +8,7 @@
   <body class="perfil">
     <div class="container">
       <header class="text-center">
-        <h1>Banco Plank</h1>
+        <h1>Sonso Bank</h1>
         <h2>Perfil</h2>
        
         </a>
@@ -20,12 +20,14 @@
             <div class="card-body">
               <h3 class="card-title"><span class="fa fa-user"></span> <%= user.local.nombre %></h3>
               <p>
-                <strong>Numero de cuenta</strong> : <%= user._id %> <br>
-                <strong>Saldo</strong> : <%= user.local.email %> <br>
-                <strong>password</strong> : <%= user.local.password %>
+                <strong>Id</strong> : <%= user._id %> <br>
+                <strong>Correo</strong> : <%= user.local.email %> <br>
+                <strong>password</strong> : <%= user.local.password %> <br>
+                <strong>Cuenta</strong> No se encuentra informacion. <br>
+                <strong>Saldo</strong> No se encuentra informacion.
               </p>
               <a href="/adtarge" class="btn btn-light btn-sm">
-                Añadir Targeta
+                Añadir Tarjeta
               </a>
               <a href="/logout" class="btn btn-light btn-sm">
                 Desconectarse
